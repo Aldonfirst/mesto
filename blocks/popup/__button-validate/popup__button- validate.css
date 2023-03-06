@@ -1,0 +1,18 @@
+.popup__button-validate{
+  width: 100%;
+  min-height: 50px;
+  border-radius: 2px;
+  background-color: #000;
+  color: #fff;
+  padding: 0;
+  margin-top: 48px;
+  font-size: 18px;
+  border: 0;
+}
+@media (max-width: 720px){
+  .popup__button-validate{
+    min-height: 46px;
+    font-size: 14px;
+   
+  }
+}
