@@ -1,5 +1,5 @@
  /* --------------Попап------------*/
-const buttonOpenPopUp = document.querySelector('.button__popup-profile');
+const buttonOpenPopUp = document.querySelector('.profile__userbutton');
 const profileform = document.querySelector('.popup');
 const closeModal = profileform.querySelector('.popup__close');
 /*--------------------Лайки----------*/

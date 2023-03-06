@@ -1,4 +1,4 @@
-.button__popup-profile{
+.profile__userbutton{
   border: 0;
   padding: 0;
   background: url(./../../../images/logo/popupButton.svg);
@@ -7,7 +7,7 @@
 }
 
 @media (max-width: 720px){
-  .button__popup-profile{
+  .profile__userbutton{
     width: 18px;
     height: 18px;
     background-size: cover;

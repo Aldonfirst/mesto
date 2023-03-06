@@ -1,4 +1,4 @@
-.button__for-element{
+.element__imgbutton{
   width: 150px;
   height: 48px;
   font-size: 24px;
@@ -9,7 +9,7 @@
 }
 
 @media (max-width: 900px){
-  .button__for-element{
+  .element__imgbutton{
     width: calc(282px - (150 + 1) * ((100vw - 320px) / (900 - 320)));
   }
 }
