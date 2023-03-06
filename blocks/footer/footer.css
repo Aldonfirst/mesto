@@ -12,6 +12,6 @@
   .footer{
     padding: 0 19px;
     padding-top:calc(51px + (66 - 51) * ((100vw - 320px) / (900 - 320)));
-    font-size:calc(14px + ( 18 - 14) * ((100vw - 320px) / (900 - 320)));;
+    font-size:calc(14px + ( 18 - 14) * ((100vw - 320px) / (900 - 320)));
   }
 }
