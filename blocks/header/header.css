@@ -1,12 +1,6 @@
 .header{
-  font-weight: 500;
-  line-height: 1;
-  min-height: 73px;
-  border-bottom: 1px solid rgba(255, 255, 255,1);
-}
-.header:hover{
-  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
-  cursor: pointer;
+  min-height: 74px;
+  border-bottom: 1px solid rgba(255, 255, 255,0.7);
 }
 
 @media (max-width: 900px){

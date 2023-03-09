@@ -9,7 +9,7 @@
   .profile__info{
     justify-items: center;
     grid-template-columns: auto 50px;
-    gap: 8px 0px;
+    gap: 10px 0px;
     align-self: flex-end;
   }
 }
