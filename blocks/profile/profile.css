@@ -8,7 +8,7 @@
 @media (max-width: 720px){
   .profile{
     flex-direction: column;
-    row-gap: 35px;
+    row-gap: 32px;
     padding: 42px 0 36px;
   }
 }

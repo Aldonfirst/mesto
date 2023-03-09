@@ -4,12 +4,11 @@
   grid-template-columns:auto 24px;
   gap: 8px 18px;
 }
-
 @media (max-width: 720px){
   .profile__info{
     justify-items: center;
-    grid-template-columns: auto 50px;
-    gap: 10px 0px;
+    grid-template-columns: auto 48px;
+    gap: 8px 0px;
     align-self: flex-end;
   }
 }

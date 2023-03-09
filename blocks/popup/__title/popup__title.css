@@ -3,12 +3,14 @@
   line-height: 1.21;
   font-weight: 900;
   margin: 0;
-  padding-bottom: 47px;
+  color: #000;
+  padding-bottom: 48px;
 }
 
 @media (max-width: 720px){
 .popup__title{
   font-size:18px;
-  padding-bottom: 66px;
+  padding-bottom: 72px;
+
 }
 }

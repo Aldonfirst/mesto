@@ -7,3 +7,5 @@
 Шрифт применен  в проекте "Intrer" ссылка на шрифт (https://rsms.me/inter/).
 Ссылка на данный макет:
 https://www.figma.com/file/OzA0Mo3lflg5WgIXaiwQKv/JavaScript.-Sprint-4-(Copy)?node-id=28212%3A212&t=sc7EGsbsI6uWJdsU-0
+
+Ссылка на страницу GitHabPages:  https://aldonfirst.github.io/mesto/index.html
