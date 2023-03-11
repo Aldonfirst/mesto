@@ -1,17 +1,13 @@
 .footer{
   max-width: 880px;
   margin: 0 auto;
-  color: #545454;
-  font-size: 18px;
-  font-weight: 400;
   padding-top: 66px;
-  line-height: 1.2;
+
 }
 
 @media (max-width: 900px){
   .footer{
     padding: 0 19px;
     padding-top:calc(51px + (66 - 51) * ((100vw - 320px) / (900 - 320)));
-    font-size:calc(14px + ( 18 - 14) * ((100vw - 320px) / (900 - 320)));
   }
 }

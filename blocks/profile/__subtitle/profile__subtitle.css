@@ -1,12 +1,16 @@
 .profile__subtitle{
   font-size: 18px;
-  line-height: 1.21;
+  line-height: 22px;
   font-weight: 400;
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media (max-width: 720px){
   .profile__subtitle{
     font-size: calc(14px + (18 - 14) * ((100vw - 320px) / (720 - 320)));
+    line-height: 17px;
   }
 }

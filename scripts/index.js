@@ -3,8 +3,11 @@ const profileform = document.querySelector('.popup');
 const closeModal = profileform.querySelector('.popup__close');
  /* --------------Попап------------*/
 function showPopUp(){
-  profileform.classList.toggle('popup_opened');
+  profileform.classList.add('popup_opened');
+  profileTitle.value = nameInput.textContent;
+  profileSubTitle.value = jobInput.textContent ;
 };
+
 buttonOpenPopUp.addEventListener('click' , showPopUp);
 
 function closePopUp(){
@@ -14,8 +17,8 @@ closeModal.addEventListener ('click' , closePopUp);
 
 /*--------------------Для отправки формы------------*/
 const formProfile = document.querySelector('.popup__form');
-const nameInput =  formProfile.querySelector('.popup__imput-user_name');
-const jobInput = formProfile.querySelector('.popup__imput-user_job');
+const nameInput =  formProfile.querySelector('.popup__imputForProfile_user_name');
+const jobInput = formProfile.querySelector('.popup__imputForProfile_user_job');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubTitle = document.querySelector('.profile__subtitle');
 

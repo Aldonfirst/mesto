@@ -5,6 +5,7 @@
   border: 0;
   background-color: #fff;
   background-size: cover;
+  cursor: pointer;
 }
 .element__like:hover{
   opacity: 0.5;
