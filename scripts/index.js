@@ -17,8 +17,8 @@ closeModal.addEventListener ('click' , closePopUp);
 
 /*--------------------Для отправки формы------------*/
 const formProfile = document.querySelector('.popup__form');
-const nameInput =  formProfile.querySelector('.popup__imputForProfile_user_name');
-const jobInput = formProfile.querySelector('.popup__imputForProfile_user_job');
+const nameInput =  formProfile.querySelector('.popup__imputprofile_user_name');
+const jobInput = formProfile.querySelector('.popup__imputprofile_user_job');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubTitle = document.querySelector('.profile__subtitle');
 

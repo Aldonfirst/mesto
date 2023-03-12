@@ -3,12 +3,11 @@
   height: 50px;
   background-color: transparent;
   padding: 0;
-  border: 1px solid #fff;
+  border: 2px solid #fff;
   background-image: url(./../../../images/logo/buttonforimage.svg);
   border-radius: 2px;
   background-repeat: no-repeat;
   background-position: center;
-
 }
 
 @media (max-width: 720px){
