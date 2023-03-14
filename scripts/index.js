@@ -51,7 +51,6 @@ formProfile.addEventListener('submit', handleFormSubmit);
 
 /*-----------------------------лайки-------------
 const likesElement = document.querySelectorAll('.element__like');
-
 for(let i = 0;i < likesElement.length; i++){
   likesElement[i].addEventListener('click',() =>{
   likesElement[i].classList.toggle('element__like_active');

@@ -1,18 +1,15 @@
 .profile__content{
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   column-gap: 30px;
-  flex-wrap: wrap;
+
 }
 @media (max-width: 720px){
 .profile__content{
-  flex-direction: column;
-    row-gap: 26px;
+display: flex;
+flex-direction: column;
+align-items: center;
+  row-gap: 26px;
   }
 }
-@media (max-width: 320px){
-.profile__content{
-  width: 100%;
-}
-}
+
+

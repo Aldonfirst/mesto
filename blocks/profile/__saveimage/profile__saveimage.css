@@ -8,10 +8,13 @@
   border-radius: 2px;
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 16px;
+  justify-self: end;
 }
 
-@media (max-width: 720px){
+@media (max-width: 900px){
   .profile__saveimage{
-    min-width: 282px;
+    width: 282px;
+    justify-self: center;
   }
 }
