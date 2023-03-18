@@ -1,5 +1,5 @@
 .element__item{
-  max-width: 282px;
+  width: 282px;
   min-height: 361px;
   background-color: #fff;
   display: flex;
@@ -7,4 +7,5 @@
   align-items: center;
   border-radius: 10px;
   overflow: hidden;
+  position: relative;
 }
