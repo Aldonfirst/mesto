@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 3fr 1fr;
   align-items: center;
-  padding: 40px 0 51px;
+  padding: 42px 0 51px;
 }
 
 @media (max-width: 900px){
