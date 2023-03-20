@@ -16,20 +16,6 @@ function closePopUp(){
 };
 closeModalUser.addEventListener ('click' , closePopUp);
 
-/*----------------Клик на картинке и ее откр------------*/
-const photoScaleOpen = document.querySelector('.popup__figure-image');//click photo
-const closeImage = document.querySelector('.popup__close_el-img-scale');//close photo
-const popupPhoto = document.querySelector('.popup__image-scale');//open photo
-
-function showImage(){
-  popupPhoto.classList.add('popup_open-img');
-};
-photoScaleOpen.addEventListener('click' , showImage);
-
-function closeimage(){
-  popupPhoto.classList.remove('popup_open-img');
-};
-closeImage.addEventListener('click' , closeImage);
 /*--------------------------Попап с картинками------------*/
 const popupGaleryElement = document.querySelector('.popup__galery');//form gal
 const closeFormGalery = document.querySelector('.popup__close_el-galery');//close gal
@@ -45,8 +31,11 @@ function closePopUpGalery(){
 };
 closeFormGalery.addEventListener('click' , closePopUpGalery);
 
-
-/*--------------------Для отправки формы профиля------------*/
+function closePopUpGalery(){
+  popupGaleryElement.classList.remove('popup_open-galery');
+};
+closeFormGalery.addEventListener('click' , closePopUpGalery);
+//-----------------сабмит попапа профиля
 const formProfile = document.querySelector('.popup__form-user');
 const nameInput =  formProfile.querySelector('.popup__imputprofile_user_name');
 const jobInput = formProfile.querySelector('.popup__imputprofile_user_job');
@@ -60,13 +49,22 @@ function handleFormSubmit (event) {
   closePopUp();
 }
 formProfile.addEventListener('submit', handleFormSubmit);
+// ---------------------сабмит галереи
+const formGalery = document.querySelector('.popup__form-galery');
+const nameInputGalery = formGalery.querySelector('.popup__imputgalery_el_name');
+const linkInputGalery = formGalery.querySelector('.popup__imputgalery_el_link');
 
-/*===============================================================================*/
-const cardTemplate = document.querySelector('#element__template').content;
-const cardsAllGalery = document.querySelector('.element');
+function handleSubmitAdd (event) {
+  event.preventDefault();
+  const newElement = ({name:nameInputGalery.value,link:linkInputGalery.value});
+  cloneElement = createCards(newElement);
+  cardsAllGalery.prepend(cloneElement);
+  formGalery.reset();//ресет инф в импутах
+  closePopUpGalery();
+}
+formGalery.addEventListener('submit', handleSubmitAdd);
 
-//массив с фото
-
+//-----------------------------массив с фото
 const initialCards = [
   {
     name: 'Архыз',
@@ -93,11 +91,26 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-/*-------------темплейт----------------*/
+const cardTemplate = document.querySelector('#element__template').content;
+const cardsAllGalery = document.querySelector('.element');
+
+
+const popupImgScale = document.querySelector('.popup__image-scale');
+
+//----------------------------темплейт
 function createCards (item) {
   const cloneElement = cardTemplate.cloneNode(true);
-  const image = cloneElement.querySelector('.element__photo').src = item.link;
-  image.alt = item.name;
+  const imageElement = cloneElement.querySelector('.element__photo');
+  imageElement.src = item.link;
+  imageElement.alt = item.name;
+
+  imageElement.addEventListener('click',(evt)=>{
+    popupFigureImage.src = item.link;
+    popupFigureImage.alt = item.name;
+    popupFigcaptionImage.textContent = item.name;
+  imgShow(popupImgScale);
+  });
+imageElement;
   //лайки
   const likes = cloneElement.querySelector('.element__like');
   likes.addEventListener('click', (evt)=>{
@@ -109,40 +122,19 @@ trash.addEventListener('click',(evt)=>{
   evt.target.closest('.element__item').remove();
 });
 //название карточки
-  cloneElement.querySelector('.element__caption').textContent = item.name;
-  cardsAllGalery.append(cloneElement);
+cloneElement.querySelector('.element__caption').textContent = item.name;
 
+ return cloneElement;
 }
 //перебор массива initialCards
-initialCards.forEach(createCards);
+initialCards.forEach(elem =>{
+  cloneElement = createCards(elem);
+  cardsAllGalery.append(cloneElement);
+});
+const popupFigureImage = popupImgScale.querySelector('.popup__figure-image');
+const popupFigcaptionImage = popupImgScale.querySelector('.popup__figcaption-image');
 
+const imgShow =(evt)=>{
+  popupImgScale.classList.toggle('popup_open-img');
 
-const formGalery = document.querySelector('.popup__form-galery');
-const nameInputGalery = formGalery.querySelector('.popup__imputgalery_el_name');
-const linkInputGalery = formGalery.querySelector('.popup__imputgalery_el_link');
-
-// сабмит галереи
-function handleSubmitAdd (event) {
-  event.preventDefault();
-
- const newCard = ({name:nameInputGalery.value,link:linkInputGalery.value});
- cloneElement = createCards(newCard);
-
-
-closePopUpGalery();
-console.log(newCard)
 }
-formGalery.addEventListener('submit', handleSubmitAdd);
-
-/*
-function handle.... (evt) {
-  evt.preventDefault();
-  const ... = функция создания карточки ({
-    link: //передаем значения инпутов в карточку
-    name: //передаем значения инпутов в карточку
-  })
-  // вставляем новую карточку в начале
-  //очищаем форму после добавления
-  //закрываем попап
-}
-*/
