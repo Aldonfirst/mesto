@@ -31,4 +31,7 @@
 @import url(../blocks/element/__text/element__text.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__author/footer__author.css);
-@import url(../blocks/popup/_open-galery/popup_open-galery.css);
+@import url(../blocks/popup/__container/_form-image/popup__container_form-image.css);
+@import url(../blocks/popup/__figure/popup__figure.css);
+@import url(../blocks/popup/__figure/_image/popup__figure-image.css);
+@import url(../blocks/popup/__figure/_figcaption/popup__figure_figcaption.css);

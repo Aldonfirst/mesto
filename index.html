@@ -1,134 +1,83 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Место</title>
-    <link rel="stylesheet" href="./pages/index.css">
+    <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="page">
     <header class="header">
       <div class="header__logo"></div>
     </header>
-     <!-----------контент------------------>
+    <!-----------профиль------------------>
     <main class="content">
       <section class="profile">
         <div class="profile__content">
           <img class="profile__avatar" src="./images/grandfather.png" alt="Фото профиля">
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <button type="button"  class="button-pointer profile__userbutton"></button>
+            <button type="button" class="button-pointer profile__userbutton"></button>
             <p class="profile__subtitle">Иследователь океана</p>
           </div>
         </div>
         <button type="button" class="button-pointer profile__saveimage"></button>
       </section>
-      <!--галерея-->
+      <!---------галерея------------------->
       <section class="element"></section>
     </main>
-    <!-----------футер------------------>
+    <!-----------футер--------------------->
     <footer class="footer">
-      <p class=" footer__author">&copy; 2023 Алдошкин Дмитрий</p>
+      <p class="footer__author">&copy; 2023 Алдошкин Дмитрий</p>
     </footer>
-    <!----------- шаблон для карточек галереи------------------>
-<template id="element__template">
-  <article class="element__item">
-    <img class="element__photo" src="#" alt="#">
-    <div class="element__text">
-      <h2 class="element__caption"></h2>
-      <button type="button" name="like" class="element__like"></button>
-      <button  type="button" name ="trash" class=" button-pointer element__garbage"></button>
+
+    <!-----------попап увеличенного фото в галерее------------------>
+    <div class="popup popup__image-scale">
+      <div class="popup__container_form-image">
+        <button type="button" class="button-pointer popup__close"></button>
+        <figure class="popup__figure">
+          <img src="#" alt="#" class="popup__figure_image">
+          <figcaption class="popup__figure_figcaption"></figcaption>
+        </figure>
+      </div>
     </div>
-  </article>
-</template>
-<!-----------попап профиля------------------>
+    <!-----------попап профиля------------------>
     <div class="popup popup__profile">
       <div class="popup__container">
-        <button type="button" class="button-pointer popup__close popup__close_el-user"></button>
+        <button type="button" class="button-pointer popup__close"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form name="form-user" class="popup__form popup__form-user">
-          <input class="popup__imputprofile popup__imputprofile_user_name" type="text" name="imput-username" placeholder="Жак-Ив Кусто" value="Жак-Ив Кусто" >
+          <input class="popup__imputprofile popup__imputprofile_user_name" type="text" name="imput-username" placeholder="Жак-Ив Кусто" value="Жак-Ив Кусто">
           <input class="popup__imputprofile popup__imputprofile_user_job" type="text" name="imput-job" placeholder="Исследователь океана" value="Исследователь океана">
           <button class="popup__button-validate" type="submit">Coхранить</button>
         </form>
-        </div>
-        </div>
-<!-----------попап галереи------------------>
-        <div class="popup popup__galery">
-          <div class="popup__container">
-            <button type="button" class="button-pointer popup__close popup__close_el-galery"></button>
-            <h2 class="popup__title">Новое место</h2>
-            <form name="form-gal" class="popup__form popup__form-galery">
-              <input class="popup__imputprofile popup__imputgalery_el_name" type="text" name="imput-img-name" placeholder="Название" required>
-              <input class="popup__imputprofile popup__imputgalery_el_link" type="text" name="imput-img-link" placeholder="Ссылка на картинку" required>
-              <button class="popup__button-validate" type="submit">Coхранить</button>
-            </form>
       </div>
     </div>
-<!-----------попап увеличенного фото в галерее------------------>
-    <div class="popup popup__image-scale">
+    <!-----------попап галереи------------------>
+    <div class="popup popup__galery">
       <div class="popup__container">
-        <button type="button" class="button-pointer popup__close popup__close_el-img-scale"></button>
-        <figure>
-          <img src = "#" alt="#" class="popup__figure-image">
-          <figcaption class="popup__figcaption-image"></figcaption>
-        </figure>
-  </div>
-</div>
-<!-----------JS------------------>
+        <button type="button" class="button-pointer popup__close"></button>
+        <h2 class="popup__title">Новое место</h2>
+        <form name="form-gal" class="popup__form popup__form-galery">
+          <input class="popup__imputprofile popup__imputgalery_el_name" type="text" name="imput-img-name" placeholder="Название" required>
+          <input class="popup__imputprofile popup__imputgalery_el_link" type="text" name="imput-img-link" placeholder="Ссылка на картинку" required>
+          <button class="popup__button-validate" type="submit">Coхранить</button>
+        </form>
+      </div>
+    </div>
+    <!----------- шаблон для карточек галереи------------------>
+    <template id="element__template">
+      <article class="element__item">
+        <img class="element__photo" src="#" alt="#" />
+        <div class="element__text">
+          <h2 class="element__caption"></h2>
+          <button type="button" name="like" class="element__like"></button>
+          <button type="button" name="trash" class="button-pointer element__garbage"></button>
+        </div>
+      </article>
+    </template>
+    <!-----------JS------------------>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-<!---<article class="element__item">
-          <img class="element__photo" src="./images/cards/lenskie-stolby-v-jakutii.png" alt="Ленские Столбы">
-          <div class="element__text">
-            <h2 class="element__caption">Ленские столбы</h2>
-            <button type="button" name="like" class="element__like"></button>
-          </div>
-        </article>
-        <article class="element__item">
-          <img class="element__photo" src="./images/cards/Dombay.png" alt="Домбай">
-          <div class="element__text">
-            <h2 class="element__caption">Домбай</h2>
-            <button type="button" name="like" class="element__like"></button>
-          </div>
-        </article>
-        <article class="element__item">
-          <img class="element__photo" src="./images/cards/karachaevck.jpg" alt="Карачаевск">
-          <div class="element__text">
-            <h2 class="element__caption">Карачаево-Черкесия</h2>
-            <button type="button" name="like" class="element__like"></button>
-          </div>
-        </article>
-        <article class="element__item">
-          <img class="element__photo" src="./images/cards/lastochkino.png" alt="Ласточкино Гнездо">
-          <div class="element__text">
-            <h2 class="element__caption">Ласточкино Гнездо</h2>
-            <button type="button" name="like" class="element__like"></button>
-          </div>
-        </article>
-        <article class="element__item">
-          <img class="element__photo" src="./images/cards/manpypyner.png" alt="Ман Пупу Нёр">
-          <div class="element__text">
-            <h2 class="element__caption">Ман Пупу Нёр</h2>
-            <button type="button" name="like" class="element__like"></button>
-          </div>
-        </article>
-        <article class="element__item">
-          <img class="element__photo" src="./images/cards/mountElbrus.png" alt="Гора Эльбрус">
-          <div class="element__text">
-            <h2 class="element__caption">Гора Эльбрус</h2>
-            <button type="button" name="like" class="element__like"></button>
-          </div>
-        </article>-->
