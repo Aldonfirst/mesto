@@ -33,8 +33,8 @@ item.addEventListener('click',()=> closePopup(closeForms));
 });
 //-----------------сабмит попапа профиля
 const formProfile = document.querySelector('.popup__form-user');
-const nameInput =  formProfile.querySelector('.popup__imputprofile_user_name');
-const jobInput = formProfile.querySelector('.popup__imputprofile_user_job');
+const nameInput =  formProfile.querySelector('.popup__imput-edit_user_name');
+const jobInput = formProfile.querySelector('.popup__imput-edit_user_job');
 
 function handleFormSubmit (event) {
   event.preventDefault();
@@ -45,8 +45,8 @@ function handleFormSubmit (event) {
 formProfile.addEventListener('submit', handleFormSubmit);
 // ---------------------сабмит галереи
 const formGalery = document.querySelector('.popup__form-galery');
-const nameInputGalery = formGalery.querySelector('.popup__imputgalery_el_name');
-const linkInputGalery = formGalery.querySelector('.popup__imputgalery_el_link');
+const nameInputGalery = formGalery.querySelector('.popup__imput-edit_el_name');
+const linkInputGalery = formGalery.querySelector('.popup__imput-edit_el_link');
 
 function handleGalerySubmit (event) {
   event.preventDefault();
