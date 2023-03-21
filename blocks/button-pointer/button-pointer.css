@@ -1,6 +1,7 @@
 .button-pointer{
   opacity: 1;
 }
+
 .button-pointer:hover{
   opacity: 0.6;
   cursor: pointer;

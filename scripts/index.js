@@ -1,9 +1,10 @@
-//
-const closeAllModals = document.querySelectorAll('.popup__close');//закрытие всех модалок
- const profileform = document.querySelector('.popup__profile');//форма профиля
+//попап профиля
+ const profileform = document.querySelector('.popup-profile');//форма профиля
  const buttonOpenProfile = document.querySelector('.profile__userbutton');//кнопка открытия профиля
  const profileTitle = document.querySelector('.profile__title');
  const profileSubTitle = document.querySelector('.profile__subtitle');
+ //закрытие всех модалок
+ const closeAllModals = document.querySelectorAll('.popup__close');
 
   buttonOpenProfile.addEventListener('click',()=>{
     openPopup(profileform);
@@ -11,7 +12,8 @@ const closeAllModals = document.querySelectorAll('.popup__close');//закрыт
   profileSubTitle.value = jobInput.textContent;
   });
 /*-----------------------------------------------------------------------*/
-const popupGaleryElement = document.querySelector('.popup__galery');//форма карточек
+//попап карточек
+const popupGaleryElement = document.querySelector('.popup-galery');//форма карточек
 const profileButtonGalery = document.querySelector('.profile__saveimage');//открытие формы доб.карточки
 
 profileButtonGalery.addEventListener('click' ,()=>{
@@ -24,6 +26,7 @@ const openPopup =(popup) =>{
 const closePopup = (popup) =>{
   popup.classList.remove('popup_opened')
 }
+//закрытие модалок
 closeAllModals.forEach(item =>{
   const closeForms = item.closest ('.popup');
 item.addEventListener('click',()=> closePopup(closeForms));
@@ -37,7 +40,7 @@ function handleFormSubmit (event) {
   event.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileSubTitle.textContent = jobInput.value;
-  closePopUp();
+  closePopup(profileform);
 }
 formProfile.addEventListener('submit', handleFormSubmit);
 // ---------------------сабмит галереи
@@ -45,16 +48,15 @@ const formGalery = document.querySelector('.popup__form-galery');
 const nameInputGalery = formGalery.querySelector('.popup__imputgalery_el_name');
 const linkInputGalery = formGalery.querySelector('.popup__imputgalery_el_link');
 
-function handleSubmitAdd (event) {
+function handleGalerySubmit (event) {
   event.preventDefault();
   const newElement = ({name:nameInputGalery.value,link:linkInputGalery.value});
   cloneElement = createCards(newElement);
   cardsAllGalery.prepend(cloneElement);
   formGalery.reset();//ресет инф в импутах
-  closePopUpGalery(); console.log()
+  closePopup(popupGaleryElement);
 }
-formGalery.addEventListener('submit', handleSubmitAdd);
-
+formGalery.addEventListener('submit', handleGalerySubmit);
 //-----------------------------массив с фото
 const initialCards = [
   {
@@ -84,17 +86,16 @@ const initialCards = [
 ];
 const cardTemplate = document.querySelector('#element__template').content;
 const cardsAllGalery = document.querySelector('.element');
-const popupImgScale = document.querySelector('.popup__image-scale');
-const popupFigureImage = popupImgScale.querySelector('.popup__figure_image');
-const popupFigcaptionImage = popupImgScale.querySelector('.popup__figure_figcaption');
-
+const popupImgScale = document.querySelector('.popup-image-scale');
+const popupFigureImage = popupImgScale.querySelector('.popup-figure__image');
+const popupFigcaptionImage = popupImgScale.querySelector('.popup-figure__figcaption');
 //----------------------------темплейт
 function createCards (item) {
   const cloneElement = cardTemplate.cloneNode(true);
   const imageElement = cloneElement.querySelector('.element__photo');
     imageElement.src = item.link;
     imageElement.alt = item.name;
-
+//зум картинки
     imageElement.addEventListener('click',()=>{
     popupFigureImage.src = item.link;
     popupFigureImage.alt = item.name;
