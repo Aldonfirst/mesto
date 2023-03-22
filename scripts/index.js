@@ -5,7 +5,6 @@ const profileTitle = document.querySelector('.profile__title');
 const profileSubTitle = document.querySelector('.profile__subtitle');
 //закрытие всех модалок
 const closeButtons = document.querySelectorAll('.popup__close');
-
 buttonOpenProfile.addEventListener('click', () => {
   openPopup(profilePopup);
   profileTitle.value = nameInput.textContent;
@@ -51,7 +50,7 @@ const linkInputGalery = formGalery.querySelector('.popup__imput-edit_el_link');
 function handleGaleryFormSubmit(event) {
   event.preventDefault();
   const newElement = ({ name: nameInputGalery.value, link: linkInputGalery.value });
-  let cloneElement = createCards(newElement);
+  const cloneElement = createCards(newElement);
   cardsAllGalery.prepend(cloneElement);
   formGalery.reset();//ресет инф в импутах
   closePopup(popupGaleryElement);
@@ -103,8 +102,8 @@ function createCards(item) {
     openPopup(popupImgScale);
   });
   //лайки
-  const likes = cloneElement.querySelector('.element__like');
-  likes.addEventListener('click', (evt) => {
+  const like = cloneElement.querySelector('.element__like');
+  like.addEventListener('click', (evt) => {
     evt.target.classList.toggle('element__like_active');
   });
   //мусорка
