@@ -1,0 +1,14 @@
+.popup__button-validate_disabled{
+cursor: not-allowed;
+background-color: transparent;
+color: #000;
+opacity: 0.2;
+border: 1px solid #000;
+}
+.popup__button-validate_disabled:hover{
+color:#fff;
+background-color: rgba(0,0,0,0.8);
+border: 1px solid transparent;
+}
+
+
