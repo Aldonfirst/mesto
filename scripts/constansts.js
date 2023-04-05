@@ -59,3 +59,4 @@ const settingValidation = {
   inputErrorClass: 'popup__error',
   errorClass: 'popup__error_active'
 };
+

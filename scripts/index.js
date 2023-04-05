@@ -43,7 +43,6 @@ function handleProfileFormSubmit(evt) {
   profileTitle.textContent = nameInput.value;
   profileSubTitle.textContent = jobInput.value;
   closePopup(profilePopup);
-  closePopup.reset(profilePopup);
 }
 formProfile.addEventListener('submit', handleProfileFormSubmit);
 // ---------------------сабмит галереи
@@ -56,6 +55,7 @@ function handleGaleryFormSubmit(evt) {
   closePopup(popupGaleryElement);
 }
 formGalery.addEventListener('submit', handleGaleryFormSubmit);
+
 //----------------------------темплейт
 function createCards(item) {
   const cloneElement = cardTemplate.cloneNode(true);
@@ -90,7 +90,7 @@ initialCards.forEach(elem => {
   cardsAllGalery.append(cloneElem);
 });
 
-enableValidation(settingValidation)
+enableValidation(settingValidation);
 
 
 

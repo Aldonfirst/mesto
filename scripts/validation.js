@@ -9,41 +9,50 @@ function enableValidation({ formSelector, ...rest }) {
 function setEvtListeners(form, { inputSelector, submitButtonSelector, inactiveButtonClass, ...rest }) {
   const inputList = Array.from(form.querySelectorAll(inputSelector));
   const btnElement = form.querySelector(submitButtonSelector);
+  toggleButtonClass(inputList, btnElement, inactiveButtonClass);
   inputList.forEach(input => {
     input.addEventListener('input', () => {
       checkInputValidity(input, rest);
-      if (hasInvalidInput(inputList)) {
-        enableButton(btnElement, inactiveButtonClass, rest)
-      } else {
-        disableButton(btnElement, inactiveButtonClass, rest)
-      }
+      toggleButtonClass(inputList, btnElement, inactiveButtonClass);
     });
   });
 }
 //поиск строки с ошибкой и ее вывод
 function checkInputValidity(input, { errorClass, inputErrorClass }) {
-  const errorElement = document.querySelector(`#${input.id}-error`);
+  const errorElement = document.querySelector(`.${input.id}-error`);
   if (input.validity.valid) {
-    errorElement.textContent = ''
-    errorElement.classList.add(inputErrorClass)
-    errorElement.classList.remove(errorClass)
+    hideInputError(input, errorElement, errorClass, inputErrorClass)
   } else {
-    errorElement.textContent = input.validationMessage
-    errorElement.classList.remove(inputErrorClass)
-    errorElement.classList.add(errorClass)
+    showInputError(input, errorElement, errorClass, inputErrorClass)
   }
 };
-function hasInvalidInput(inputs) {
-  return inputs.some(item => !item.validity.valid);
+function showInputError(input, errorElement, errorClass, inputErrorClass) {
+  input.classList.add(inputErrorClass)
+  errorElement.classList.add(errorClass)
+  errorElement.textContent = input.validationMessage
+}
+function hideInputError(input, errorElement, errorClass, inputErrorClass) {
+  input.classList.remove(inputErrorClass)
+  errorElement.classList.remove(errorClass)
+  errorElement.textContent = ''
+}
+function toggleButtonClass(inputList, btnElement, inactiveButtonClass) {
+  if (hasInvalidInput(inputList)) {
+    disableButton(btnElement, inactiveButtonClass)
+  } else {
+    enableButton(btnElement, inactiveButtonClass)
+  }
+}
+function hasInvalidInput(inputList) {
+  return inputList.some(item => !item.validity.valid);
 };
 //блок кнопок
 function enableButton(button, inactiveButtonClass) {
-  button.classList.add(inactiveButtonClass)
-  button.disabled = true;
-}
-function disableButton(button, inactiveButtonClass) {
   button.classList.remove(inactiveButtonClass)
   button.disabled = false;
+}
+function disableButton(button, inactiveButtonClass) {
+  button.classList.add(inactiveButtonClass)
+  button.disabled = true;
 };
 
-enableValidation(settingValidation)
