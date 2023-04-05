@@ -3,11 +3,13 @@ buttonOpenProfile.addEventListener('click', () => {
   openPopup(profilePopup);
   profileTitle.value = nameInput.textContent;
   profileSubTitle.value = jobInput.textContent;
+
 });
 /*-----------------------------------------------------------------------*/
 //попап карточек
 profileButtonGalery.addEventListener('click', () => {
   openPopup(popupGaleryElement);
+
 });
 //--------------------анонимки для открытия и закрытия
 const openPopup = (popup) => {
@@ -18,6 +20,7 @@ const openPopup = (popup) => {
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown',popupCloseByEscape);
+
 }
 //закрытие модалок
 closeButtons.forEach(item => {
@@ -43,6 +46,7 @@ function handleProfileFormSubmit(evt) {
   profileTitle.textContent = nameInput.value;
   profileSubTitle.textContent = jobInput.value;
   closePopup(profilePopup);
+  formProfile.reset();
 }
 formProfile.addEventListener('submit', handleProfileFormSubmit);
 // ---------------------сабмит галереи
@@ -53,6 +57,7 @@ function handleGaleryFormSubmit(evt) {
   cardsAllGalery.prepend(cloneElement);
   formGalery.reset();//ресет инф в импутах
   closePopup(popupGaleryElement);
+disableButton(evt.submitter,settingValidation.inactiveButtonClass)
 }
 formGalery.addEventListener('submit', handleGaleryFormSubmit);
 
