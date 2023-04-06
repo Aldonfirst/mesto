@@ -14,12 +14,12 @@ profileButtonGalery.addEventListener('click', () => {
 //--------------------анонимки для открытия и закрытия
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown',popupCloseByEscape);
+  document.addEventListener('keydown', popupCloseByEscape);
 
 };
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown',popupCloseByEscape);
+  document.removeEventListener('keydown', popupCloseByEscape);
 
 }
 //закрытие модалок
@@ -27,26 +27,26 @@ closeButtons.forEach(item => {
   const closeForms = item.closest('.popup');
   item.addEventListener('click', () => closePopup(closeForms));
   //закрытие модалок по оверлею----------------------------------------ДЛЯ ШЕСТОЙ ПРАКТИЧ
-  closeForms.addEventListener('mousedown',(evt)=>{
-    if(evt.target === evt.currentTarget){
+  closeForms.addEventListener('mousedown', (evt) => {
+    if (evt.target === evt.currentTarget) {
       closePopup(evt.currentTarget);
     }
   });
 });
 //закрытие по ESC------------------------------------------------------ДЛЯ ШЕСТОЙ ПРАКТИЧ
-function popupCloseByEscape (evt){
-  if(evt.key ==='Escape'){
+function popupCloseByEscape(evt) {
+  if (evt.key === 'Escape') {
     const popupOpened = document.querySelector('.popup_opened')
     closePopup(popupOpened)
   }
- };
+};
 //-----------------сабмит попапа профиля
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileSubTitle.textContent = jobInput.value;
   closePopup(profilePopup);
-  formProfile.reset();
+  formProfile.reset();//ресет инф профиля
 }
 formProfile.addEventListener('submit', handleProfileFormSubmit);
 // ---------------------сабмит галереи
@@ -55,9 +55,10 @@ function handleGaleryFormSubmit(evt) {
   const newElement = ({ name: nameInputGalery.value, link: linkInputGalery.value });
   const cloneElement = createCards(newElement);
   cardsAllGalery.prepend(cloneElement);
-  formGalery.reset();//ресет инф в импутах
+  formGalery.reset();//ресет инф в карточке
   closePopup(popupGaleryElement);
-disableButton(evt.submitter,settingValidation.inactiveButtonClass)
+  //деактивация кнопки после добавления карточки-------------------------ДЛЯ ШЕСТОЙ ПРАКТИЧ
+  disableButton(evt.submitter, settingValidation.inactiveButtonClass)
 }
 formGalery.addEventListener('submit', handleGaleryFormSubmit);
 

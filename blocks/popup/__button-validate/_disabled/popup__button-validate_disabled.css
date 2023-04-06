@@ -4,8 +4,8 @@ background-color: transparent;
 color: #000;
 opacity: 0.2;
 border: 1px solid #000;
-margin-top: 20px;
 }
+
 .popup__button-validate_disabled:hover{
 color:#fff;
 background-color: rgba(0,0,0,0.8);

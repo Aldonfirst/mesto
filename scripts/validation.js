@@ -26,15 +26,13 @@ function checkInputValidity(input, { errorClass, inputErrorClass }) {
     showInputError(input, errorElement, errorClass, inputErrorClass)
   }
 };
-function showInputError(input, errorElement, errorClass, inputErrorClass) {
-  input.classList.add(inputErrorClass)
-  errorElement.classList.add(errorClass)
-  errorElement.textContent = input.validationMessage
+function showInputError(input, errorElement, inputErrorClass) {
+  input.classList.add(inputErrorClass);
+  errorElement.textContent = input.validationMessage;
 }
-function hideInputError(input, errorElement, errorClass, inputErrorClass) {
-  input.classList.remove(inputErrorClass)
-  errorElement.classList.remove(errorClass)
-  errorElement.textContent = ''
+function hideInputError(input, errorElement, inputErrorClass) {
+  input.classList.remove(inputErrorClass);
+  errorElement.textContent = '';
 }
 function toggleButtonClass(inputList, btnElement, inactiveButtonClass) {
   if (hasInvalidInput(inputList)) {

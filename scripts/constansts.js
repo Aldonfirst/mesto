@@ -56,7 +56,6 @@ const settingValidation = {
   inputSelector: '.popup__imput-edit',
   submitButtonSelector: '.popup__button-validate',
   inactiveButtonClass: 'popup__button-validate_disabled',
-  inputErrorClass: 'popup__error',
-  errorClass: 'popup__error_active'
+  inputErrorClass: 'popup__error'
 };
 
