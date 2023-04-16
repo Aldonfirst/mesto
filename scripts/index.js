@@ -26,14 +26,14 @@ const closePopup = (popup) => {
 closeButtons.forEach(item => {
   const closeForms = item.closest('.popup');
   item.addEventListener('click', () => closePopup(closeForms));
-  //закрытие модалок по оверлею----------------------------------------ДЛЯ ШЕСТОЙ ПРАКТИЧ
+  //закрытие модалок по оверлею
   closeForms.addEventListener('mousedown', (evt) => {
     if (evt.target === evt.currentTarget) {
       closePopup(evt.currentTarget);
     }
   });
 });
-//закрытие по ESC------------------------------------------------------ДЛЯ ШЕСТОЙ ПРАКТИЧ
+//закрытие по ESC
 function popupCloseByEscape(evt) {
   if (evt.key === 'Escape') {
     const popupOpened = document.querySelector('.popup_opened')
@@ -57,7 +57,7 @@ function handleGaleryFormSubmit(evt) {
   cardsAllGalery.prepend(cloneElement);
   formGalery.reset();//ресет инф в карточке
   closePopup(popupGaleryElement);
-  //деактивация кнопки после добавления карточки-------------------------ДЛЯ ШЕСТОЙ ПРАКТИЧ
+  //деактивация кнопки после добавления карточки
   disableButton(evt.submitter, settingValidation.inactiveButtonClass)
 }
 formGalery.addEventListener('submit', handleGaleryFormSubmit);
