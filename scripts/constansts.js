@@ -8,9 +8,7 @@ const closeButtons = document.querySelectorAll('.popup__close');//закрыти
 //интилизация карточек
 const popupGaleryElement = document.querySelector('.popup-galery');//форма карточек
 const profileButtonGalery = document.querySelector('.profile__saveimage');//открытие формы доб.карточки
-//интилизация шаблона темплейт
-const cardTemplate = document.querySelector('#element__template').content;
-const cardsAllGalery = document.querySelector('.element');
+
 //интилизация попапа с картинкой
 const popupImgScale = document.querySelector('.popup-image-scale');
 const popupFigureImage = popupImgScale.querySelector('.popup-figure__image');
@@ -50,12 +48,18 @@ const jobInput = formProfile.querySelector('.popup__imput-edit_user_job');
 const formGalery = document.forms["form-galery"];
 const nameInputGalery = formGalery.querySelector('.popup__imput-edit_el_name');
 const linkInputGalery = formGalery.querySelector('.popup__imput-edit_el_link');
+
+const cardTemplate = document.querySelector('#element__template');
+const cardsAllGalery = document.querySelector('.element');
+const elemList = document.querySelector(".element__item")
+
 //валидация формы
 const settingValidation = {
   formSelector: '.popup__form',
   inputSelector: '.popup__imput-edit',
   submitButtonSelector: '.popup__button-validate',
   inactiveButtonClass: 'popup__button-validate_disabled',
-  inputErrorClass: '.popup__imput-edit_vizible'
+  inputErrorClass: 'popup__imput-edit_vizible'
 };
+
 

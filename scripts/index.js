@@ -1,26 +1,29 @@
+import FormValidation from "./FormValidation.js"
+import Card from "./Card.js"
+
+const formProfileValidation = new FormValidation(settingValidation, formProfile);
+const formGaleryValidation = new FormValidation(settingValidation, formGalery);
+formProfileValidation.enableValidation();
+formGaleryValidation.enableValidation();
+
 //попап профиля
 buttonOpenProfile.addEventListener('click', () => {
   openPopup(profilePopup);
   profileTitle.value = nameInput.textContent;
   profileSubTitle.value = jobInput.textContent;
-
 });
-/*-----------------------------------------------------------------------*/
 //попап карточек
 profileButtonGalery.addEventListener('click', () => {
   openPopup(popupGaleryElement);
-
 });
 //--------------------анонимки для открытия и закрытия
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', popupCloseByEscape);
-
 };
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', popupCloseByEscape);
-
 }
 //закрытие модалок
 closeButtons.forEach(item => {
@@ -40,7 +43,7 @@ function popupCloseByEscape(evt) {
     closePopup(popupOpened)
   }
 };
-//-----------------сабмит попапа профиля
+//---------------сабмит попапа профиля----------------------------------------
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileTitle.textContent = nameInput.value;
@@ -49,54 +52,38 @@ function handleProfileFormSubmit(evt) {
   formProfile.reset();//ресет инф профиля
 }
 formProfile.addEventListener('submit', handleProfileFormSubmit);
-// ---------------------сабмит галереи
+// ---------------------сабмит галереи---------------------------------------------
 function handleGaleryFormSubmit(evt) {
   evt.preventDefault();
   const newElement = ({ name: nameInputGalery.value, link: linkInputGalery.value });
-  const cloneElement = createCards(newElement);
-  cardsAllGalery.prepend(cloneElement);
+  CardListAdd(cardsAllGalery, newCardCreate(newElement))
   formGalery.reset();//ресет инф в карточке
   closePopup(popupGaleryElement);
-  //деактивация кнопки после добавления карточки
-  disableButton(evt.submitter, settingValidation.inactiveButtonClass)
+   evt.submitter.classList.add(settingValidation.inactiveButtonClass)
+
 }
 formGalery.addEventListener('submit', handleGaleryFormSubmit);
 
-//----------------------------темплейт
-function createCards(item) {
-  const cloneElement = cardTemplate.cloneNode(true);
-  const imageElement = cloneElement.querySelector('.element__photo');
-  imageElement.src = item.link;
-  imageElement.alt = item.name;
-  //зум картинки
-  imageElement.addEventListener('click', () => {
-    popupFigureImage.src = item.link;
-    popupFigureImage.alt = item.name;
-    popupFigcaptionImage.textContent = item.name;
-    openPopup(popupImgScale);
-  });
-  //лайки
-  const like = cloneElement.querySelector('.element__like');
-  like.addEventListener('click', (evt) => {
-    evt.target.classList.toggle('element__like_active');
-  });
-  //мусорка
-  const trash = cloneElement.querySelector('.element__garbage');
-  trash.addEventListener('click', (evt) => {
-    evt.target.closest('.element__item').remove();
-  });
-  //название карточки
-  cloneElement.querySelector('.element__caption').textContent = item.name;
-
-  return cloneElement;
+function CardListAdd(container, card) {
+  container.prepend(card)
 }
-//перебор массива initialCards
-initialCards.forEach(elem => {
-  const cloneElem = createCards(elem);
-  cardsAllGalery.append(cloneElem);
+
+//функция просмора картинки в карточке
+function scaleImgInCard(item) {
+  popupFigureImage.src = item.link;
+  popupFigureImage.alt = item.name;
+  popupFigcaptionImage.textContent = item.name;
+  openPopup(popupImgScale);
+}
+
+
+initialCards.forEach((elem) => {
+  CardListAdd(cardsAllGalery, newCardCreate(elem));
 });
-
-enableValidation(settingValidation);
-
-
+//функция создания карточки 
+function newCardCreate(elem) {
+  const card = new Card(elem, cardTemplate, scaleImgInCard);
+  const elemCard = card.createCards()
+  return elemCard;
+}
 
