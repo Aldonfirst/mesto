@@ -1,10 +1,10 @@
-import FormValidation from "./FormValidation.js"
+import FormValidator from "./FormValidator.js"
 import Card from "./Card.js"
 
-const formProfileValidation = new FormValidation(settingValidation, formProfile);
-const formGaleryValidation = new FormValidation(settingValidation, formGalery);
-formProfileValidation.enableValidation();
-formGaleryValidation.enableValidation();
+const formProfileValid = new FormValidator(settingValidation, formProfile);
+const formGaleryValid = new FormValidator(settingValidation, formGalery);
+formProfileValid.enableValidation();
+formGaleryValid.enableValidation();
 
 //попап профиля
 buttonOpenProfile.addEventListener('click', () => {
@@ -14,6 +14,7 @@ buttonOpenProfile.addEventListener('click', () => {
 });
 //попап карточек
 profileButtonGalery.addEventListener('click', () => {
+  formGaleryValid.resetButtonBeforeSubmit()
   openPopup(popupGaleryElement);
 });
 //--------------------анонимки для открытия и закрытия
@@ -59,7 +60,6 @@ function handleGaleryFormSubmit(evt) {
   CardListAdd(cardsAllGalery, newCardCreate(newElement))
   formGalery.reset();//ресет инф в карточке
   closePopup(popupGaleryElement);
-   evt.submitter.classList.add(settingValidation.inactiveButtonClass)
 
 }
 formGalery.addEventListener('submit', handleGaleryFormSubmit);
@@ -69,7 +69,7 @@ function CardListAdd(container, card) {
 }
 
 //функция просмора картинки в карточке
-function scaleImgInCard(item) {
+function scaleImageInCard(item) {
   popupFigureImage.src = item.link;
   popupFigureImage.alt = item.name;
   popupFigcaptionImage.textContent = item.name;
@@ -82,8 +82,8 @@ initialCards.forEach((elem) => {
 });
 //функция создания карточки 
 function newCardCreate(elem) {
-  const card = new Card(elem, cardTemplate, scaleImgInCard);
-  const elemCard = card.createCards()
-  return elemCard;
+  const card = new Card(elem, cardTemplate, scaleImageInCard);
+  const cardElement = card.createCards()
+  return cardElement;
 }
 

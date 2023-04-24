@@ -1,6 +1,6 @@
-export default class FormValidation {
-  constructor(params, form) {
-    const { inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass } = params
+export default class FormValidator {
+  constructor(parameters, form) {
+    const { inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass } = parameters
     this._form = form
     this._inputSelector = inputSelector
     this._submitButtonSelector = submitButtonSelector
@@ -9,9 +9,7 @@ export default class FormValidation {
     this._inputList = form.querySelectorAll(this._inputSelector)
     this._buttonElement = form.querySelector(this._submitButtonSelector)
   }
-  _setEvtListeners() {
-    this._toggleButtonClass();
-    this._buttonElement.disabled = true;
+  _setEventListeners() {
     this._inputList.forEach((input) => {
       input.addEventListener(("input"), () => {
         this._checkInputValidity(input)
@@ -23,17 +21,17 @@ export default class FormValidation {
   _checkInputValidity(input) {
     const errorElement = this._form.querySelector(`.${input.id}-error`);
     if (input.validity.valid) {
-      this._hideInputError(input, errorElement)
+      this._hideError(input, errorElement)
     } else {
-      this._showInputError(input, errorElement)
+      this._showError(input, errorElement)
     }
   }
-  _showInputError(input, errorElement) {
+  _showError(input, errorElement) {
     input.classList.add(this._inputErrorClass);
     errorElement.textContent = input.validationMessage;
 
   }
-  _hideInputError(input, errorElement) {
+  _hideError(input, errorElement) {
     input.classList.remove(this._inputErrorClass);
     errorElement.textContent = "";
   }
@@ -56,11 +54,14 @@ export default class FormValidation {
     this._buttonElement.classList.add(this._inactiveButtonClass);
     this._buttonElement.disabled = true;
   };
-
   enableValidation() {
-    this._setEvtListeners();
+    this._setEventListeners();
+    this.resetButtonBeforeSubmit()
   }
-
+  resetButtonBeforeSubmit() {
+    this._toggleButtonClass()
+    this._form.reset()
+  }
 }
 
 
