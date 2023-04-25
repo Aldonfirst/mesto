@@ -6,25 +6,30 @@ const formGaleryValid = new FormValidator(settingValidation, formGalery);
 formProfileValid.enableValidation();
 formGaleryValid.enableValidation();
 
+
 //попап профиля
 buttonOpenProfile.addEventListener('click', () => {
   openPopup(profilePopup);
+  formProfileValid.resetFormErrors()
+
   profileTitle.value = nameInput.textContent;
   profileSubTitle.value = jobInput.textContent;
+ 
 });
 //попап карточек
-profileButtonGalery.addEventListener('click', () => {
-  formGaleryValid.resetButtonBeforeSubmit()
+profileButtonGalery.addEventListener('click', (e) => {
+  formGaleryValid.resetFormErrors()
+
   openPopup(popupGaleryElement);
 });
 //--------------------анонимки для открытия и закрытия
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', popupCloseByEscape);
+  document.addEventListener('keydown', closePopupByEscape);
 };
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', popupCloseByEscape);
+  document.removeEventListener('keydown', closePopupByEscape);
 }
 //закрытие модалок
 closeButtons.forEach(item => {
@@ -38,7 +43,7 @@ closeButtons.forEach(item => {
   });
 });
 //закрытие по ESC
-function popupCloseByEscape(evt) {
+function closePopupByEscape(evt) {
   if (evt.key === 'Escape') {
     const popupOpened = document.querySelector('.popup_opened')
     closePopup(popupOpened)
@@ -57,17 +62,16 @@ formProfile.addEventListener('submit', handleProfileFormSubmit);
 function handleGaleryFormSubmit(evt) {
   evt.preventDefault();
   const newElement = ({ name: nameInputGalery.value, link: linkInputGalery.value });
-  CardListAdd(cardsAllGalery, newCardCreate(newElement))
+  cardListAdd(cardsAllGalery, createNewCard(newElement))
   formGalery.reset();//ресет инф в карточке
   closePopup(popupGaleryElement);
 
 }
 formGalery.addEventListener('submit', handleGaleryFormSubmit);
 
-function CardListAdd(container, card) {
+function cardListAdd(container, card) {
   container.prepend(card)
 }
-
 //функция просмора картинки в карточке
 function scaleImageInCard(item) {
   popupFigureImage.src = item.link;
@@ -75,13 +79,11 @@ function scaleImageInCard(item) {
   popupFigcaptionImage.textContent = item.name;
   openPopup(popupImgScale);
 }
-
-
 initialCards.forEach((elem) => {
-  CardListAdd(cardsAllGalery, newCardCreate(elem));
+  cardListAdd(cardsAllGalery, createNewCard(elem));
 });
 //функция создания карточки 
-function newCardCreate(elem) {
+function createNewCard(elem) {
   const card = new Card(elem, cardTemplate, scaleImageInCard);
   const cardElement = card.createCards()
   return cardElement;
