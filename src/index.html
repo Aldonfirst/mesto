@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Место</title>
-    <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="stylesheet" href="./pages/index.css">
   </head>
   <body class="page">
     <header class="header">
@@ -15,7 +15,7 @@
     <main class="content">
       <section class="profile">
         <div class="profile__content">
-          <img class="profile__avatar" src="./images/grandfather.png" alt="Фото профиля">
+          <img class="profile__avatar" src="./images/Kusto.jpg" alt="Фото профиля">
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button type="button" class="button-pointer profile__userbutton"></button>
@@ -47,10 +47,10 @@
         <button type="button" class="button-pointer popup__close"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form name="form-user" class="popup__form popup__form-user" novalidate>
-          <input class="popup__imput-edit popup__imput-edit_user_name" id="username-imput" type="text" name="imput-username"
+          <input class="popup__imput-edit popup__imput-edit_user_name" id="username-imput" type="text" name="username"
           placeholder="Жак-Ив Кусто" value="Жак-Ив Кусто" minlength="2" maxlength="40" required>
           <span class="popup__error username-imput-error"></span>
-          <input class=" popup__imput-edit popup__imput-edit_user_job" id="userjob-imput" type="text" name="imput-job"
+          <input class=" popup__imput-edit popup__imput-edit_user_job" id="userjob-imput" type="text" name="job"
           placeholder="Исследователь океана" value="Исследователь океана" minlength="2" maxlength="200" required>
           <span class="popup__error userjob-imput-error"></span>
           <button class="popup__button-validate" type="submit">Coхранить</button>
@@ -63,10 +63,10 @@
         <button type="button" class="button-pointer popup__close"></button>
         <h2 class="popup__title">Новое место</h2>
         <form name="form-galery" class="popup__form popup__form-galery" novalidate>
-          <input class="popup__imput-edit popup__imput-edit_el_name" id="img-name-imput" type="text" name="imput-img-name"
+          <input class="popup__imput-edit popup__imput-edit_el_name" id="img-name-imput" type="text" name="name"
           placeholder="Название" minlength="2" maxlength="30" required>
           <span class="popup__error  img-name-imput-error"></span>
-          <input class="popup__imput-edit popup__imput-edit_el_link" id="upl-name-imput" type="url" name="imput-img-link"
+          <input class="popup__imput-edit popup__imput-edit_el_link" id="upl-name-imput" type="url" name="link"
           placeholder="Ссылка на картинку" required>
           <span class="popup__error upl-name-imput-error"></span>
           <button class="popup__button-validate" type="submit">Coздать</button>
@@ -84,10 +84,6 @@
         </div>
       </article>
     </template>
-    <!-----------JS------------------>
-    <script src="./scripts/constansts.js"></script>
-    <script type="module" src ="scripts/Card.js"></script>
-    <script type="module" src="./scripts/index.js"></script>
-    <script type="module" src ="scripts/FormValidator.js"></script>
+    <script type="module" src="./pages/index.js"></script>
   </body>
 </html>

@@ -1,13 +1,16 @@
+
+
 export default class Card{
     constructor(cardItem,cardTemplate,scaleImageInCard){
-      this._cardItem = cardItem;
+      const {name,link} = cardItem;
+      this._cardItem = cardItem
     this._cardTemplate = cardTemplate;
    this._scaleImageInCard = scaleImageInCard;
-   this._link = cardItem.link;
-   this._name = cardItem.name;
+   this._link = link;
+   this._name = name;
     }
     _getCloneTemplate() {
-  return this._cardTemplate.content.querySelector('.element__item').cloneNode(true)
+  return document.querySelector(this._cardTemplate).content.querySelector('.element__item').cloneNode(true)
     }
   _handleLikeClick = () => {
     this._like.classList.toggle('element__like_active');
@@ -15,15 +18,18 @@ export default class Card{
   _handleDeleteCard=()=>{
     this._cloneElem.remove();
   }
-  _handleScaleImage =()=> {
-    this._scaleImageInCard(this._cardItem);
+  _handleScaleImage=()=> {
+    this._scaleImageInCard( this._cardItem)
+
   }
+ 
   _setEventListener() {
     this._like.addEventListener('click',this._handleLikeClick);
     this._trash.addEventListener('click',this._handleDeleteCard);
     this._imageElem.addEventListener('click',this._handleScaleImage);
+    
   }
-  createCards = () =>{
+  createCards(){
     this._cloneElem = this._getCloneTemplate();
     this._imageElem = this._cloneElem.querySelector('.element__photo');
     this._imageElem.src = this._link;

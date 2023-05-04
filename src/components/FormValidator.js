@@ -8,7 +8,7 @@ export default class FormValidator {
     this._inputErrorClass = inputErrorClass
     this._inputList = this._form.querySelectorAll(this._inputSelector)
     this._buttonElement = this._form.querySelector(this._submitButtonSelector)
-   
+
   }
   _setEventListeners() {
     this._inputList.forEach((input) => {
