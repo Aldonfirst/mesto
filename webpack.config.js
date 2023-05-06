@@ -10,18 +10,18 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
-    publicPath: '',
+    publicPath: ''
   },
   mode: 'development',
   devServer: {
     static: path.resolve(__dirname, './dist'),
     open: true,
     compress: true,
-    port: 8080
+    port: 8080,
   },
   module: {
     rules: [{
-        test: /\.js$/,
+        test: /\.js$/i,
         use: 'babel-loader',
         exclude: '/node_modules/'
       },
@@ -30,15 +30,14 @@ module.exports = {
         type: 'asset/resource',
       },
       {
-        test: /\.css$/,
+        test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, {
             loader: 'css-loader',
             options: {
               importLoaders: 1
             }
           },
-          'postcss-loader'
-        ]
+          'postcss-loader']
       },
     ]
   },
