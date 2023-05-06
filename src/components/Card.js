@@ -1,5 +1,4 @@
 
-
 export default class Card{
     constructor(cardItem,cardTemplate,scaleImageInCard){
       const {name,link} = cardItem;
@@ -20,14 +19,13 @@ export default class Card{
   }
   _handleScaleImage=()=> {
     this._scaleImageInCard( this._cardItem)
-
   }
- 
+
   _setEventListener() {
     this._like.addEventListener('click',this._handleLikeClick);
     this._trash.addEventListener('click',this._handleDeleteCard);
     this._imageElem.addEventListener('click',this._handleScaleImage);
-    
+
   }
   createCards(){
     this._cloneElem = this._getCloneTemplate();

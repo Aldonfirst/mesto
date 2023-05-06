@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production",
-    "dev": "webpack --mode development",
+    "build": "rm -rf dist && webpack --mode production",
+    "dev": "webpack serve",
     "clear": "rd /s /q dist && webpack"
   },
   "author": "\"Aldonfirst\"",
