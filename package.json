@@ -5,7 +5,8 @@
   "scripts": {
     "build": "webpack",
     "dev": "webpack serve",
-    "clear": "rd /s /q dist && webpack"
+    "clear": "rd /s /q dist && webpack",
+    "deploy": "gh-pages -d dist"
   },
   "author": "\"Aldonfirst\"",
   "license": "ISC",
@@ -21,6 +22,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.3",
     "cssnano": "^6.0.1",
+    "gh-pages": "^5.0.0",
     "html-webpack-plugin": "^5.5.1",
     "mini-css-extract-plugin": "^2.7.5",
     "postcss-loader": "^7.3.0",

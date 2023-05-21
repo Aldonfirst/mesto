@@ -1,9 +1,9 @@
-export{
-    buttonOpenProfile,profileButtonGalery,profilePopup,
-    popupGaleryElement,popupImgScale,configInfo,formProfile,
-    formGalery,cardTemplate,cardsAllGalery,settingValidation,
-    formDelete,formAvatar,profileAvatarButton,popupAvatar,
-    popupDeleteCard,formDeleteCard,
+export {
+  buttonOpenProfile, profileButtonGalery, profilePopup,
+  popupGaleryElement, popupImgScale, configInfo, formProfile,
+  formGalery, cardTemplate, cardsAllGalery, settingValidation,
+  formAvatar, profileAvatarButton, popupAvatar,
+  popupDeleteCard, formDeleteCard,
 }
 //кнопки  октрытия попапов
 const buttonOpenProfile = document.querySelector('.profile__userbutton');
@@ -11,7 +11,7 @@ const profileButtonGalery = document.querySelector('.profile__saveimage');
 const profileAvatarButton = document.querySelector('.profile__avatar-button');
 
 //попапы
-const popupDeleteCard ='.popup-type_delete'
+const popupDeleteCard = '.popup-type-delete'
 const popupAvatar = '.popup-avatar'
 const profilePopup = '.popup-profile'
 const popupGaleryElement = '.popup-galery'
@@ -53,8 +53,6 @@ const configInfo = {
 const formDeleteCard = document.forms["form-delete"]
 const formProfile = document.forms["form-user"];
 const formGalery = document.forms["form-galery"];
-
-const formDelete = document.forms["form-delete"];
 const formAvatar = document.forms["form-avatar"];
 
 //контейнер карточки и контейнер для всех карточек
