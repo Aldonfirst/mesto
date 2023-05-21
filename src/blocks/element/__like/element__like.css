@@ -6,6 +6,7 @@
   background-color: #fff;
   background-size: cover;
   cursor: pointer;
+  padding: 0;
 }
 .element__like:hover{
   opacity: 0.5;

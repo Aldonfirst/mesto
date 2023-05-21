@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Место</title>
+    <!-- <link rel="stylesheet" href="./pages/index.css" /> -->
   </head>
   <body class="page">
     <header class="header">
@@ -14,11 +15,14 @@
     <main class="content">
       <section class="profile">
         <div class="profile__content">
-          <img class="profile__avatar" src="<%=require('./images/Kusto.jpg')%>" alt="Фото профиля">
+          <!-- <img class="profile__avatar" src="<%=require('./images/Kusto.jpg')%>" alt="Фото профиля"> -->
+          <button class="profile__avatar-button" type="button">
+            <img class="profile__avatar" src="#" alt="Фото профиля">
+          </button>
           <div class="profile__info">
-            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <h1 class="profile__title"></h1>
             <button type="button" class="button-pointer profile__userbutton"></button>
-            <p class="profile__subtitle">Иследователь океана</p>
+            <p class="profile__subtitle"></p>
           </div>
         </div>
         <button type="button" class="button-pointer profile__saveimage"></button>
@@ -46,10 +50,10 @@
         <button type="button" class="button-pointer popup__close"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form name="form-user" class="popup__form popup__form-user" novalidate>
-          <input class="popup__imput-edit popup__imput-edit_user_name" id="username-imput" type="text" name="username"
+          <input class="popup__imput-edit popup__imput-edit_user_name" id="username-imput" type="text" name="name"
           placeholder="Жак-Ив Кусто" value="Жак-Ив Кусто" minlength="2" maxlength="40" required>
           <span class="popup__error username-imput-error"></span>
-          <input class=" popup__imput-edit popup__imput-edit_user_job" id="userjob-imput" type="text" name="job"
+          <input class=" popup__imput-edit popup__imput-edit_user_job" id="userjob-imput" type="text" name="about"
           placeholder="Исследователь океана" value="Исследователь океана" minlength="2" maxlength="200" required>
           <span class="popup__error userjob-imput-error"></span>
           <button class="popup__button-validate" type="submit">Coхранить</button>
@@ -72,16 +76,43 @@
         </form>
       </div>
     </div>
+    <!------------- попап Аватарки ------------>
+    <div class="popup popup-avatar">
+      <div class="popup__container">
+        <button type="button" class="button-pointer popup__close"></button>
+        <h2 class="popup__title">Обновить аватар</h2>
+        <form name="form-avatar" class="popup__form popup__form-avatar" novalidate>
+          <input class="popup__imput-edit" id="upl-avatar" type="url" name="avatar"
+          placeholder="Введите ссылку"  required>
+          <span class="popup__error  upl-avatar-error"></span>
+          <button class="popup__button-validate" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+    <!----------попап удаления карточки-------->
+<div class="popup popup-type_delete">
+  <div class="popup__container">
+    <button type="button" class="button-pointer popup__close"></button>
+    <h2 class="popup__title">Вы уверены?</h2>
+    <form name="form-delete" class="popup__form popup__form-delete" >
+      <button type="submit" class="popup__button-validate">Да</button>
+    </form>
+  </div>
+</div>
     <!----------- шаблон для карточек галереи------------------>
     <template id="element__template">
       <article class="element__item">
         <img class="element__photo" src="#" alt="#">
         <div class="element__text">
           <h2 class="element__caption"></h2>
+            <div class="aaa">
           <button type="button" name="like" class="element__like"></button>
+          <span class="element__like_counter"></span>
+          </div>
           <button type="button" name="trash" class="button-pointer element__garbage"></button>
         </div>
       </article>
     </template>
+    <!-- <script type="module" src="./pages/index.js"></script> -->
   </body>
 </html>

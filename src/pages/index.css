@@ -40,4 +40,7 @@
 @import url(../blocks/popup/__button-validate/_disabled/popup__button-validate_disabled.css);
 @import url(../blocks/popup-image-scale/popup-image-scale.css);
 @import url(../blocks/popup/__imput-edit/_vizible/popup__imput-edit_vizible.css);
+@import url(../blocks/element/__like/_counter/element__like_counter.css);
+@import url(../blocks/element/aaa.css);
+@import url(../blocks/profile/__avatar-button/profile__avatar-button.css);
 @import "../pages/index.css"
