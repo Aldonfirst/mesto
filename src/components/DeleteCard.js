@@ -1,5 +1,6 @@
 import Popup from "./Popup.js";
 
+
 export default class DeleteCard extends Popup {
   constructor(popupSelector, submitFunction) {
     super(popupSelector)
@@ -12,8 +13,8 @@ export default class DeleteCard extends Popup {
       this._submitFunction(this._elem)
     })
   }
-  open = (elem) => {
+  open = (card) => {
     super.open()
-    this._elem = elem
+    this._elem = card
   }
 }
