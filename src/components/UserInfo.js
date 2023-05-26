@@ -16,4 +16,12 @@ export default class UserInfo {
     this._infoElement.textContent = job;
     this._avatarElement.src = avatar;
   }
+
+setMyId(id) {
+  this._id = id
+}
+
+getMyId(){
+  return this._id
+}
 }

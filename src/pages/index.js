@@ -1,5 +1,5 @@
 
-import "../pages/index.css"
+// import "../pages/index.css"
 import Api from "../components/Api.js"
 import FormValidator from "../components/FormValidator.js"
 import Card from "../components/Card.js"
@@ -8,6 +8,7 @@ import UserInfo from "../components/UserInfo.js"
 import PopupWithForm from "../components/PopupWithForm.js"
 import PopupWithImage from "../components/PopupWithImage.js"
 import DeleteCard from "../components/DeleteCard.js"
+import handleSubmit from "../utils/utilitsSubmitButton.js"
 import {
   buttonOpenProfile, profileButtonGalery, profilePopup,
   popupGaleryElement, popupImgScale, configInfo, formProfile,
@@ -44,20 +45,7 @@ const formGaleryValid = new FormValidator(settingValidation, formGalery);
 const formAvatarValid = new FormValidator(settingValidation, formAvatar);
 const popupImage = new PopupWithImage(popupImgScale);
 const userInfo = new UserInfo(configInfo);
-//шаблон сабмита
-function handleSubmit(request, popupInstance, loadingText = "Сохранение...") {
-  popupInstance.renderLoading(true, loadingText)
-  request()
-    .then(() => {
-      popupInstance.close()
-    })
-    .catch((err) => {
-      console.error(`Ошибка ${err}`);
-    })
-    .finally(() => {
-      popupInstance.renderLoading(false);
-    });
-}
+
 //экземпляр профиля
 const popupProfile = new PopupWithForm(profilePopup, (data) => {
   function makeRequest() {
@@ -69,13 +57,13 @@ const popupProfile = new PopupWithForm(profilePopup, (data) => {
   handleSubmit(makeRequest, popupProfile)
 })
 //удаляшка
-const popupDeleteElem = new DeleteCard(popupDeleteCard, (dataCard) => {
-  return api.deleteMyCard(dataCard.cardId)
-    .then(() => {
-      dataCard.card.removeCard()
-      popupDeleteElem.close()
-    }).catch(err => console.log(err))
-
+const popupDeleteElem = new DeleteCard(popupDeleteCard, (data) => {
+    return api.deleteMyCard(data.cardId)
+      .then(() => {
+        data.card.removeCard()
+       popupDeleteElem.close()
+      })
+       .catch(console.error)
 })
 //экземпляр аватарки
 const popupAddAvatar = new PopupWithForm(popupAvatar, (data) => {
@@ -85,21 +73,22 @@ const popupAddAvatar = new PopupWithForm(popupAvatar, (data) => {
         userInfo.setUserInfo({ username: res.name, job: res.about, avatar: res.avatar })
       });
   }
-  handleSubmit(makeRequest, popupAddAvatar,);
+  handleSubmit(makeRequest, popupAddAvatar);
 })
 //экземпляр создания карточки
 const popupCreateCard = new PopupWithForm(popupGaleryElement, (data) => {
+  console.log(data)
   function makeRequest() {
-    return Promise.all([api.getUserData(), api.addCard(data)])
-      .then(([userData, cardData]) => {
-        cardData.myId = userData._id
-        cardList.addItemPrepend(newCardList(cardData))
+    return  api.addCard(data)
+      .then(cardData => {
+        cardData.myId = userInfo.getMyId()
+        cardList.addItemPrepend(createNewCard(cardData))
       })
   }
-  handleSubmit(makeRequest, popupCreateCard,)
+  handleSubmit(makeRequest, popupCreateCard,'Создание...')
 })
 //экземпляр  самой карточки
-function newCardList(cardItem) {
+function createNewCard(cardItem) {
   const card = new Card(cardItem, cardTemplate, popupImage.open, popupDeleteElem.open,
     () => {
       const isLiked = card.isLikedByMe();
@@ -109,14 +98,14 @@ function newCardList(cardItem) {
             card.updateLikesCount(res.likes);
             card.toggleLikeButton();
           })
-          .catch(err => console.log(err));
+         .catch(console.error)
       } else {
         api.likeCard(cardItem._id)
           .then(res => {
             card.updateLikesCount(res.likes);
             card.toggleLikeButton();
           })
-          .catch(err => console.log(err));
+          .catch(console.error)
       }
     });
   return card.createCards()
@@ -124,7 +113,7 @@ function newCardList(cardItem) {
 //экземпляр секции
 const cardList = new Section({
   renderer: (data) => {
-    cardList.addItemPrepend(newCardList(data))
+    cardList.addItemPrepend(createNewCard(data))
   }
 }, cardsAllGalery)
 
@@ -140,6 +129,7 @@ Promise.all([api.getUserData(), api.getInitialCards()])
   .then(([userData, cards]) => {
     cards.forEach(elem => elem.myId = userData._id)
     userInfo.setUserInfo({ username: userData.name, job: userData.about, avatar: userData.avatar })
+    userInfo.setMyId(userData._id)
     cardList.renderItems(cards.reverse())// тут сделал реверс чтобы не писать метод в классе Section
   }).catch(err => console.log(err));
 
