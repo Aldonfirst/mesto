@@ -54,7 +54,7 @@ const popupProfile = new PopupWithForm(profilePopup, (data) => {
         userInfo.setUserInfo({ username: res.name, job: res.about, avatar: res.avatar })
       })
   }
-  handleSubmit(makeRequest, popupProfile)
+  handleSubmit(makeRequest, popupProfile,)
 })
 //удаляшка
 const popupDeleteElem = new DeleteCard(popupDeleteCard, (data) => {

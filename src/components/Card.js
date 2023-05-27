@@ -13,7 +13,6 @@ export default class Card {
     this._ownerId = owner;
     this._likes = likes;
     this._myId = myId;
-
   }
   _getCloneTemplate() {
     return document.querySelector(this._cardTemplate).content.querySelector('.element__item').cloneNode(true)
